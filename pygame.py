@@ -128,10 +128,20 @@ while running:
     elapsed_time = (pygame.time.get_ticks() - start_ticks) / 1000
     #경과시간을 (ms) 1000으로 나누어서 초(s) 단위로 표시
 
-    timer = game_font.render(int(total_time-elaspsed_time)
+    timer = game_font.render(str(int(total_time-elapsed_time)), True, (255,255,255))
+    #출력할 글자, True, 글자색상
+    screen.blit(timer, (10,10))
+    #만약 시간이 0 이하이면 게임 종료
+    if total_time - elapsed_time <= 0:
+        print("타임아웃")
+        running = False
+
 
     pygame.display.update() # 게임화면을 다시그리기!
 
+# 잠시 대기
+
+pygame.time.delay(2000) #2초정도 대기
 
 #pygame 종료
 
